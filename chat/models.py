@@ -6,6 +6,7 @@ from user.models import User
 
 class ChatRoom(models.Model):
     roomId = ShortUUIDField()
+    
     type = models.CharField(
         max_length=10,
         default='dm'
