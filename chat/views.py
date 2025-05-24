@@ -34,5 +34,5 @@ class MessageView(ListAPIView):
     pagination_class = LimitOffsetPagination
 
     def get_queryset(self):
-        room_id = self.kwargs['room_id']
+        room_id = self.kwargs['roomId']
         return ChatMessage.objects.filter(chat_roomId=room_id).order_by('-timestamp')
