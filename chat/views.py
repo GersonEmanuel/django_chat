@@ -29,3 +29,10 @@ class ChatRoomView(APIView):
         return Response(serialzer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
+class MessageView(ListAPIView):
+    serializer_class = ChatmessageSerializer
+    pagination_class = LimitOffsetPagination
+
+    def get_queryset(self):
+        room_id = self.kwargs['room_id']
+        return ChatMessage.objects.filter(chat_roomId=room_id).order_by('-timestamp')
